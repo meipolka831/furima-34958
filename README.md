@@ -26,33 +26,35 @@ Things you may want to cover:
 
 ## users
 
-| Column     | Type         | Options        |
-|------------|--------------|----------------|
-| nickname   | string       | null: false    |
-| email      | string       | null: false    |
-| password   | string       | null: false    |
-| name       | string       | null: false    |
-| namekana   | string       | null: false    |
-| birthday   | string       | null: false    |
+| Column               | Type         | Options        |
+|----------------------|--------------|----------------|
+| nickname             | string       | null: false    |
+| email                | string       | unique: true   |
+| encrypted_password   | string       | null: false    |
+| surname              | string       | null: false    |
+| name                 | string       | null: false    |
+| surnamekana          | string       | null: false    |
+| namekana             | string       | null: false    |
+| birthday             | date         | null: false    |
 
 
 ### Association
 * has_many :products
-* has_many :buy
+* has_many :buys
+* has_many :sends
 
 ## products
 
 | Column           | Type         | Options           |
 |------------------|--------------|-------------------|
 | name             | string       | null: false       |
-| image            | string       | null: false       |
 | detail           | text         | null: false       |
 | discription      | text         | null: false       |
-| user             | reference    | foreign_key: true |
+| user             | references   | foreign_key: true |
 
 ### Association
-* belongs_to :users
-* has_one :sends
+* belongs_to :user
+* has_one :send
 * has_one :buy
 
 
@@ -60,18 +62,15 @@ Things you may want to cover:
 
 | Column           | Type         | Options           |
 |------------------|--------------|-------------------|
-| ccnumber         | string       | null: false       |
-| ccdate           | string       | null: false       |
-| cccode           | string       | null: false       |
-| product          | reference    | foreign_key: true |
-| user             | reference    | foreign_key: true |
+| product          | references   | foreign_key: true |
+| user             | references   | foreign_key: true |
 
 
 ### Association
 
-* belongs_to :users
-* belongs_to :products
-* has_one :sends
+* belongs_to :user
+* belongs_to :product
+* has_one :send
 
 
 ## sends
@@ -81,20 +80,18 @@ Things you may want to cover:
 | Column           | Type         | Options           |
 |------------------|--------------|-------------------|
 | zip              | string       | null: false       |
-| prefecture       | string       | null: false       |
+| prefecture_id    | integer      | null: false       |
 | city             | string       | null: false       |
 | number           | string       | null: false       |
-| built            | string       | null: false       |
+| built            | string       |
 | telephone        | string       | null: false       |
-| product          | reference    | foreign_key: true |
-| user             | reference    | foreign_key: true |
-| buy              | reference    | foreign_key: true |
+| buy              | references   | foreign_key: true |
 
 
 ### Association
 
-* belongs_to :users
-* belongs_to :products
+* belongs_to :user
+* belongs_to :product
 * belongs_to :buy
 
 
