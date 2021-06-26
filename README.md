@@ -48,11 +48,11 @@ Things you may want to cover:
 |------------------|--------------|-------------------|
 | name             | string       | null: false       |
 | detail           | text         | null: false       |
-| status_id        | text         | null: false       |
-| burden_id        | string       | null: false       |
-| area_id          | string       | null: false       |
+| status_id        | integer      | null: false       |
+| burden_id        | integer      | null: false       |
+| area_id          | integer      | null: false       |
 | shipping_date_id | integer      | null: false       |
-| category_id      | string       | null: false       |
+| category_id      | integer      | null: false       |
 | money            | integer      | null: false       |
 | user             | references   | foreign_key: true |
 
