@@ -48,10 +48,10 @@ Things you may want to cover:
 |------------------|--------------|-------------------|
 | name             | string       | null: false       |
 | detail           | text         | null: false       |
-| status_id        | string       | null: false       |
+| status_id        | text         | null: false       |
 | burden_id        | string       | null: false       |
 | area_id          | string       | null: false       |
-| shippingdate_id  | integer      | null: false       |
+| shipping_date_id | integer      | null: false       |
 | category_id      | string       | null: false       |
 | money            | integer      | null: false       |
 | user             | references   | foreign_key: true |
@@ -82,10 +82,10 @@ Things you may want to cover:
 | Column           | Type         | Options           |
 |------------------|--------------|-------------------|
 | zip              | string       | null: false       |
-| prefecture_id    | integer      | null: false       |
+| area_id          | integer      | null: false       |
 | city             | string       | null: false       |
 | number           | string       | null: false       |
-| built            | string       |
+| building         | string       |
 | telephone        | string       | null: false       |
 | buy              | references   | foreign_key: true |
 
