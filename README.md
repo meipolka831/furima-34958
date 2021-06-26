@@ -26,22 +26,21 @@ Things you may want to cover:
 
 ## users
 
-| Column               | Type         | Options        |
-|----------------------|--------------|----------------|
-| nickname             | string       | null: false    |
-| email                | string       | unique: true   |
-| encrypted_password   | string       | null: false    |
-| surname              | string       | null: false    |
-| name                 | string       | null: false    |
-| surnamekana          | string       | null: false    |
-| namekana             | string       | null: false    |
-| birthday             | date         | null: false    |
+| Column               | Type         | Options                     |
+|----------------------|--------------|-----------------------------|
+| nickname             | string       | null: false                 |
+| email                | string       | null: false, unique: true   |
+| encrypted_password   | string       | null: false                 |
+| surname              | string       | null: false                 |
+| name                 | string       | null: false                 |
+| surnamekana          | string       | null: false                 |
+| namekana             | string       | null: false                 |
+| birthday             | date         | null: false                 |
 
 
 ### Association
 * has_many :products
 * has_many :buys
-* has_many :sends
 
 ## products
 
@@ -54,7 +53,6 @@ Things you may want to cover:
 
 ### Association
 * belongs_to :user
-* has_one :send
 * has_one :buy
 
 
@@ -90,8 +88,6 @@ Things you may want to cover:
 
 ### Association
 
-* belongs_to :user
-* belongs_to :product
 * belongs_to :buy
 
 
