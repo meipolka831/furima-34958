@@ -48,13 +48,12 @@ Things you may want to cover:
 |------------------|--------------|-------------------|
 | name             | string       | null: false       |
 | detail           | text         | null: false       |
-| description      | text         | null: false       |
-| status           | string       | null: false       |
-| burden           | string       | null: false       |
-| area             | string       | null: false       |
-| shippingdate     | string       | null: false       |
-| category         | string       | null: false       |
-| money            | string       | null: false       |
+| status_id        | string       | null: false       |
+| burden_id        | string       | null: false       |
+| area_id          | string       | null: false       |
+| shippingdate_id  | integer      | null: false       |
+| category_id      | string       | null: false       |
+| money            | integer      | null: false       |
 | user             | references   | foreign_key: true |
 
 ### Association
