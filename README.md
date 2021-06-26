@@ -68,12 +68,11 @@ Things you may want to cover:
 
 * belongs_to :user
 * belongs_to :product
-* has_one :send
+* has_one :shipping
 
 
-## sends
 
-## sends
+## shippings
 
 | Column           | Type         | Options           |
 |------------------|--------------|-------------------|
