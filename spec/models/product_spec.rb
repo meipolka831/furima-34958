@@ -13,9 +13,18 @@ RSpec.describe Product, type: :model do
         expect(@product).to be_valid
       end
 
+      it "moneyは￥300~¥9,999,999の間のみ保存可能であること" do
+
+      end
+
     end
 
     context '登録出来ない場合' do
+
+      it "imageが空だと登録できない" do
+        @product.image = ''
+        @product.valid?
+      end
       
       it "nameが空だと登録できない" do
         @product.name = ''
@@ -63,6 +72,24 @@ RSpec.describe Product, type: :model do
         @product.money = ''
         @product.valid?
         expect(@product.errors.full_messages).to include("Money can't be blank")
+      end
+
+      it "moneyは半角英字のみだと登録できない" do
+        @product.money = 'aaa'
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Money is not a number")
+      end
+
+      it "moneyは半角英数字混合だと登録できないこと" do
+        @product.money = 'aaa111'
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Money is not a number")
+      end
+
+      it "moneyは全角数字だと登録できない" do
+      @product.money = '１１１'
+      @product.valid?
+      expect(@product.errors.full_messages).to include("Money is not a number")
       end
 
       it 'userがいなければ登録できない' do

@@ -2,15 +2,15 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
   def index
-    @products = Product.all
+    #@products = Product.all
   end
 
   def new
     @product = Product.new
   end
 
-  def edit
-  end
+  #def edit
+  #end
 
   def create
     @product = Product.new(product_params)
