@@ -3,7 +3,6 @@ class Product < ApplicationRecord
     validates :name
     validates :detail
     validates :money
-    validates :user_id
 
       with_options numericality: { other_than: 1 , message: "can't be blank"}do
         validates :status_id
@@ -14,6 +13,13 @@ class Product < ApplicationRecord
       end
 
   end
+
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :genre
+  belongs_to :statu
+  belongs_to :burden
+  belongs_to :area
+  belongs_to :shipping_date
 
   belongs_to :user
   has_one_attached :image
