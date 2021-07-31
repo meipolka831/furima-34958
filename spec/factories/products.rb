@@ -10,8 +10,11 @@ FactoryBot.define do
     category_id {2}
     money {1000}
 
+
     after(:build) do |product|
       product.image.attach(io: File.open('public/images/test_image.png'), filename: 'test_image.png')
     end
+
+    
   end
 end

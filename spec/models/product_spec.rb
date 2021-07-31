@@ -19,8 +19,9 @@ RSpec.describe Product, type: :model do
     context '登録出来ない場合' do
 
       it "imageが空だと登録できない" do
-        @product.image = ''
+        @product.image = nil
         @product.valid?
+        expect(@product.errors.full_messages).to include("Image can't be blank")
       end
       
       it "nameが空だと登録できない" do
@@ -41,8 +42,20 @@ RSpec.describe Product, type: :model do
         expect(@product.errors.full_messages).to include("Status can't be blank")
       end
 
+      it "status_idが1だと登録できない" do
+        @product.status_id = '1'
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Status can't be blank")
+      end
+
       it "burden_idが空だと登録できない" do
         @product.burden_id = ''
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Burden can't be blank")
+      end
+
+      it "burden_idが1だと登録できない" do
+        @product.burden_id = '1'
         @product.valid?
         expect(@product.errors.full_messages).to include("Burden can't be blank")
       end
@@ -53,8 +66,20 @@ RSpec.describe Product, type: :model do
         expect(@product.errors.full_messages).to include("Area can't be blank")
       end
 
+      it "area_idが1だと登録できない" do
+        @product.area_id = '1'
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Area can't be blank")
+      end
+
       it "shipping_date_idが空だと登録出来ない" do
         @product.shipping_date_id = ''
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Shipping date can't be blank")
+      end
+
+      it "shipping_date_idが1だと登録できない" do
+        @product.shipping_date_id = '1'
         @product.valid?
         expect(@product.errors.full_messages).to include("Shipping date can't be blank")
       end
@@ -65,29 +90,48 @@ RSpec.describe Product, type: :model do
         expect(@product.errors.full_messages).to include("Category can't be blank")
       end
 
+      it "category_idが1だと登録できない" do
+        @product.category_id = '1'
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Category can't be blank")
+      end
+
       it "moneyが空だと登録出来ない" do
         @product.money = ''
         @product.valid?
-        expect(@product.errors.full_messages).to include("Money can't be blank")
+        expect(@product.errors.full_messages).to include("Money is not included in the list")
       end
 
       it "moneyは半角英字のみだと登録できない" do
         @product.money = 'aaa'
         @product.valid?
-        expect(@product.errors.full_messages).to include("Money is not a number")
+        expect(@product.errors.full_messages).to include("Money is not included in the list")
       end
 
       it "moneyは半角英数字混合だと登録できないこと" do
         @product.money = 'aaa111'
         @product.valid?
-        expect(@product.errors.full_messages).to include("Money is not a number")
+        expect(@product.errors.full_messages).to include("Money is not included in the list")
       end
 
       it "moneyは全角数字だと登録できない" do
-      @product.money = '１１１'
-      @product.valid?
-      expect(@product.errors.full_messages).to include("Money is not a number")
+        @product.money = '１１１'
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Money is not included in the list")
       end
+
+      it "moneyは299以下では登録できない" do
+        @product.money = '298'
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Money is not included in the list")
+      end
+
+      it "moneyは10,000,000以上では登録できない" do
+        @product.money = '100000000'
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Money is not included in the list")
+      end
+
 
       it 'userがいなければ登録できない' do
         @product.user = nil
