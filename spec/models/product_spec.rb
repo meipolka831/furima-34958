@@ -43,7 +43,7 @@ RSpec.describe Product, type: :model do
       end
 
       it "status_idが1だと登録できない" do
-        @product.status_id = '1'
+        @product.status_id = 1
         @product.valid?
         expect(@product.errors.full_messages).to include("Status can't be blank")
       end
@@ -55,7 +55,7 @@ RSpec.describe Product, type: :model do
       end
 
       it "burden_idが1だと登録できない" do
-        @product.burden_id = '1'
+        @product.burden_id = 1
         @product.valid?
         expect(@product.errors.full_messages).to include("Burden can't be blank")
       end
@@ -67,7 +67,7 @@ RSpec.describe Product, type: :model do
       end
 
       it "area_idが1だと登録できない" do
-        @product.area_id = '1'
+        @product.area_id = 1
         @product.valid?
         expect(@product.errors.full_messages).to include("Area can't be blank")
       end
@@ -79,7 +79,7 @@ RSpec.describe Product, type: :model do
       end
 
       it "shipping_date_idが1だと登録できない" do
-        @product.shipping_date_id = '1'
+        @product.shipping_date_id = 1
         @product.valid?
         expect(@product.errors.full_messages).to include("Shipping date can't be blank")
       end
@@ -91,7 +91,7 @@ RSpec.describe Product, type: :model do
       end
 
       it "category_idが1だと登録できない" do
-        @product.category_id = '1'
+        @product.category_id = 1
         @product.valid?
         expect(@product.errors.full_messages).to include("Category can't be blank")
       end
@@ -121,13 +121,13 @@ RSpec.describe Product, type: :model do
       end
 
       it "moneyは299以下では登録できない" do
-        @product.money = '298'
+        @product.money = 298
         @product.valid?
         expect(@product.errors.full_messages).to include("Money is not included in the list")
       end
 
       it "moneyは10,000,000以上では登録できない" do
-        @product.money = '100000000'
+        @product.money = 100000000
         @product.valid?
         expect(@product.errors.full_messages).to include("Money is not included in the list")
       end
