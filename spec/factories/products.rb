@@ -1,7 +1,6 @@
 FactoryBot.define do
   factory :product do
     association :user
-    image {1}
     name {"aaa"}
     detail {"aaa"}
     area_id {2}
@@ -10,5 +9,9 @@ FactoryBot.define do
     shipping_date_id {2}
     category_id {2}
     money {1000}
+
+    after(:build) do |product|
+      product.image.attach(io: File.open('public/images/test_image.png'), filename: 'test_image.png')
+    end
   end
 end

@@ -13,9 +13,6 @@ RSpec.describe Product, type: :model do
         expect(@product).to be_valid
       end
 
-      it "moneyは￥300~¥9,999,999の間のみ保存可能であること" do
-
-      end
 
     end
 
