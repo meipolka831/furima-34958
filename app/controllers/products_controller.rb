@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
   def index
-    @products = Product.all
+    #@products = Product.all
   end
 
   def new
@@ -15,7 +15,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
-        redirect_to root_path
+        ridirect_to root_path
     else
         render 'new'
     end
