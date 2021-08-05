@@ -15,12 +15,17 @@ class ProductsController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
+    unless current_user.id == @product.user_id
+      redirect_to root_path
+    else
+      render 'new'
+    end 
   end
 
   def update
     @product = Product.find(params[:id])
     if @product.update(product_params)
-      redirect_to product_path
+      redirect_to product_path 
     else
       render 'new'
     end
