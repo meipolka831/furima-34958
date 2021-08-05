@@ -19,8 +19,11 @@ class ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
-    @product.update(product_params)
-    redirect_to product_path
+    if @product.update(product_params)
+      redirect_to product_path
+    else
+      render 'new'
+    end
   end
 
   def create
